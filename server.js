@@ -9,3 +9,10 @@ function send404(response) {
     response.write('Error 404: resource not found.');
     response.end();
 }
+
+function sendFile(response, filePath, fileContents) {
+    response.writeHead(
+        200, {'content-type': mime.lookup(path.basename(filePath)) } 
+    );
+    response.end(fileContents);
+}
